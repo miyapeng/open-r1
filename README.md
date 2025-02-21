@@ -52,6 +52,7 @@ nvcc --version # check the CUDA
 conda create -n openr1 python==3.11
 conda activate openr1
 pip install vllm>=0.7.0 --extra-index-url https://download.pytorch.org/whl/cu121 # it is suitable for CUDA12.1 or CUDA 12.3
+cd open-r1
 pip install -e ".[dev]"
 pip list # check if torch is 2.5.1+cu121
 huggingface-cli login # token ask for me 
