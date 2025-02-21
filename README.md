@@ -49,6 +49,19 @@ We will use the DeepSeek-R1 [tech report](https://github.com/deepseek-ai/DeepSee
 To run the code in this project, first, create a Python virtual environment using e.g. `uv`.
 To install `uv`, follow the [UV Installation Guide](https://docs.astral.sh/uv/getting-started/installation/).
 
+Notice to check your CUDA, if your CUDA is not 12.4, you should be careful to downlaod `vllm`
+```shell
+nvcc --version # check the CUDA
+conda create -n openr1 python==3.11
+conda activate openr1
+pip install vllm>=0.7.0 --extra-index-url https://download.pytorch.org/whl/cu121 # it is suitable for CUDA12.1 or CUDA 12.3
+pip install -e ".[dev]"
+pip list # check if torch is 2.5.1+cu121
+huggingface-cli login # token ask for me 
+wandb login #if error, read error and fix , token is(ask me)
+```
+####  So if you do above setting and no error, tell me, do not run the following commands.
+
 
 ```shell
 uv venv openr1 --python 3.11 && source openr1/bin/activate && uv pip install --upgrade pip --link-mode=copy
